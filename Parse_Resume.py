@@ -124,18 +124,18 @@ def parse_resumes_in_folder(folder_path, output_csv):
             resume_text = extract_info_from_pdf(pdf_path)
             name, phone, email, website = extract_resume_info(resume_text)
             college = extract_career_info(resume_text)
-            # data.append([name, phone, email, website, filename])
-            data.append([college, filename])
+            data.append([name, phone, email, website, college, filename])
+            # data.append([college, filename])
 
             
 
     # Create a pandas DataFrame from the extracted data and save it as a CSV file
-    # df = pd.DataFrame(data, columns=["Name", "Cellphone number", "Email", "Website", "file"])
-    df = pd.DataFrame(data, columns = ["college", "file"])
+    df = pd.DataFrame(data, columns=["Name", "Cellphone number", "Email", "Website", 'college name', "file"])
+    # df = pd.DataFrame(data, columns = ["college", "file"])
     df.to_csv(output_csv, index=False)
 
 if __name__ == "__main__":
-    folder_path = "/Users/gihyeonkwon/Documents/UCSD/Research/Tanner/resumeParsing/research-lab-parsing/resume_samples"
-    output_csv = "/Users/gihyeonkwon/Documents/UCSD/Research/Tanner/resumeParsing/research-lab-parsing/resume_data.csv"
+    folder_path = "/Users/gihyeonkwon/Documents/UCSD/Research/Tanner/resumeParsing/research-lab-parsing/Resume_parse/resume_samples"
+    output_csv = "/Users/gihyeonkwon/Documents/UCSD/Research/Tanner/resumeParsing/research-lab-parsing/Resume_parse/resume_data.csv"
     parse_resumes_in_folder(folder_path, output_csv) 
     print("completed")
