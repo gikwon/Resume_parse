@@ -84,7 +84,7 @@ def fuzzy_match_colleges(text, colleges, threshold=90):
             matched_colleges.append(college)
     return matched_colleges
 
-def extract_career_info(text):
+def extract_college_name(text):
     #try 1: didnt work
     # doc = nlp(text)
     # #Regex to get college patterns
@@ -123,7 +123,7 @@ def parse_resumes_in_folder(folder_path, output_csv):
             pdf_path = os.path.join(folder_path, filename)
             resume_text = extract_info_from_pdf(pdf_path)
             name, phone, email, website = extract_resume_info(resume_text)
-            college = extract_career_info(resume_text)
+            college = extract_college_name(resume_text)
             data.append([name, phone, email, website, college, filename])
             # data.append([college, filename])
 
